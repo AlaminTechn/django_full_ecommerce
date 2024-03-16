@@ -100,18 +100,30 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(os.environ.get("WEB_ACCESS_TOKEN_LIFETIME", 5)),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(os.environ.get("WEB_REFRESH_TOKEN_LIFETIME", 5)),
+# }
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static'), ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_URL = 'media/'
+STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+
+STATICFILES_DIR = [
+        STATIC_DIR,
+]
+
+MEDIA_FOLDER = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# -----In BGB--------
-# BASE_SITE_URL = str(os.environ.get("BASE_SITE_URL", ""))
-# MEDIA_URL = BASE_SITE_URL + MEDIA_FOLDER
+BASE_SITE_URL = str(os.environ.get("BASE_SITE_URL", ""))
+
+MEDIA_URL = BASE_SITE_URL + MEDIA_FOLDER
 
 
 
